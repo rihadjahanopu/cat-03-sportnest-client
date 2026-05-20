@@ -47,7 +47,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="text-gray-300 italic leading-relaxed">
-                "{t.quote}"
+                &ldquo;{t.quote}&rdquo;
               </p>
             </div>
             <div className="flex items-center gap-4 pt-6 border-t border-white/5 mt-auto relative z-10">

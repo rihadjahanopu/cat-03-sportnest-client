@@ -22,8 +22,12 @@ export default function ProfilePage() {
       toast.error("Please login to access your profile");
       router.push("/login");
     } else if (user) {
-      setName(user.name || "");
-      setImageUrl(user.image || "");
+      if (name !== (user.name || "")) {
+        setTimeout(() => setName(user.name || ""), 0);
+      }
+      if (imageUrl !== (user.image || "")) {
+        setTimeout(() => setImageUrl(user.image || ""), 0);
+      }
     }
   }, [user, loading, router]);
 

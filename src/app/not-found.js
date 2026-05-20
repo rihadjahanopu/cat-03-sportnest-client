@@ -39,7 +39,7 @@ export default function NotFound() {
           </h2>
           
           <p className="text-gray-400 text-sm sm:text-lg mb-8 max-w-md mx-auto leading-relaxed">
-            You've wandered outside the playing area. The page you are looking for might have been moved, deleted, or never existed in the tournament bracket.
+            You&apos;ve wandered outside the playing area. The page you are looking for might have been moved, deleted, or never existed in the tournament bracket.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
