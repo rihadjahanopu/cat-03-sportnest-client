@@ -73,31 +73,32 @@ export default function LoginPage() {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 100, damping: 15 }}
         className="glass p-8 rounded-2xl w-full max-w-md"
       >
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
-          <p className="text-gray-400 text-sm">Login to your SportNest account</p>
+          <p className="text-slate-500 dark:text-gray-400 text-sm">Login to your SportNest account</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+            <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-2">Email</label>
             <input
               {...register("email")}
               type="email"
-              className="w-full bg-secondary/50 border border-card-border rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+              className="w-full bg-secondary/50 border border-card-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
               placeholder="you@example.com"
             />
             {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+            <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-2">Password</label>
             <input
               {...register("password")}
               type="password"
-              className="w-full bg-secondary/50 border border-card-border rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+              className="w-full bg-secondary/50 border border-card-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
               placeholder="••••••••"
             />
             {errors.password && <p className="text-red-400 text-xs mt-1">{errors.password.message}</p>}
@@ -106,7 +107,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary hover:bg-primary-dark text-secondary font-bold py-3 rounded-lg transition-all shadow-[0_0_15px_rgba(57,255,20,0.3)] hover:shadow-[0_0_25px_rgba(57,255,20,0.5)] disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-primary hover:bg-primary-dark text-white dark:text-secondary font-bold py-3 rounded-lg transition-all shadow-[0_0_15px_rgba(21,128,61,0.15)] dark:shadow-[0_0_15px_rgba(57,255,20,0.3)] hover:shadow-[0_0_25px_rgba(21,128,61,0.3)] dark:hover:shadow-[0_0_25px_rgba(57,255,20,0.5)] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
@@ -114,14 +115,14 @@ export default function LoginPage() {
 
         <div className="mt-6 flex items-center justify-center gap-4">
           <div className="h-px bg-card-border flex-1"></div>
-          <span className="text-sm text-gray-400">or</span>
+          <span className="text-sm text-slate-500 dark:text-gray-400">or</span>
           <div className="h-px bg-card-border flex-1"></div>
         </div>
 
         <button
           onClick={handleGoogleLogin}
           type="button"
-          className="mt-6 w-full glass hover:bg-white/5 font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2"
+          className="mt-6 w-full glass hover:bg-black/5 dark:hover:bg-white/5 font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">
             <path
@@ -144,7 +145,7 @@ export default function LoginPage() {
           Continue with Google
         </button>
 
-        <p className="mt-8 text-center text-sm text-gray-400">
+        <p className="mt-8 text-center text-sm text-slate-500 dark:text-gray-400">
           Don&apos;t have an account?{" "}
           <Link href="/register" className="text-primary hover:text-primary-dark font-medium">
             Register here

@@ -2,30 +2,68 @@
 
 @custom-variant dark (&:is(.dark *));
 
+:root {
+  --primary: #15803d; /* Rich green for light mode contrast */
+  --primary-dark: #166534;
+  --secondary: #f1f5f9; /* Slate 100 */
+  --accent: #0284c7; /* Sky 600 */
+  
+  --background: #f8fafc; /* Slate 50 */
+  --foreground: #0f172a; /* Slate 900 */
+  
+  --card: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(0, 0, 0, 0.08);
+  
+  --muted: #475569; /* Slate 600 */
+  
+  --body-gradient-from: #f1f5f9;
+  --body-gradient-via: #f8fafc;
+  --body-gradient-to: #e2e8f0;
+}
+
+.dark {
+  --primary: #39ff14; /* Lime Green / Neon Green */
+  --primary-dark: #2ce60d;
+  --secondary: #0f172a; /* Dark Slate */
+  --accent: #00ffff; /* Electric Blue */
+  
+  --background: #09090b; /* Very Dark background */
+  --foreground: #ffffff;
+  
+  --card: rgba(15, 23, 42, 0.6);
+  --card-border: rgba(255, 255, 255, 0.1);
+  
+  --muted: #a1a1aa;
+  
+  --body-gradient-from: #0f172a;
+  --body-gradient-via: #09090b;
+  --body-gradient-to: #0f172a;
+}
+
 @theme {
-  --color-primary: #39ff14; /* Lime Green / Neon Green */
-  --color-primary-dark: #2ce60d;
-  --color-secondary: #0f172a; /* Dark Slate */
-  --color-accent: #00ffff; /* Electric Blue */
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   
-  --color-background: #09090b; /* Very Dark background */
-  --color-foreground: #ffffff;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
   
-  --color-card: rgba(15, 23, 42, 0.6);
-  --color-card-border: rgba(255, 255, 255, 0.1);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
   
-  --color-muted: #a1a1aa;
+  --color-muted: var(--muted);
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light dark;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-card backdrop-blur-md border border-card-border shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+    @apply bg-card backdrop-blur-md border border-card-border shadow-[0_4px_30px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.2)];
   }
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
@@ -34,7 +72,8 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased min-h-screen bg-gradient-to-br from-secondary via-[#09090b] to-[#0f172a];
+    @apply bg-background text-foreground antialiased min-h-screen bg-gradient-to-br from-[var(--body-gradient-from)] via-[var(--body-gradient-via)] to-[var(--body-gradient-to)] transition-colors duration-300;
     font-family: var(--font-sans, system-ui, sans-serif);
   }
 }
+

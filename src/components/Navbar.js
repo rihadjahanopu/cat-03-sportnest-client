@@ -3,16 +3,18 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Menu, X, User } from 'lucide-react';
+import { Menu, X, User, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 import { useAuth } from '@/providers/AuthProvider';
 import { useRouter } from 'next/navigation';
+import { useTheme } from '@/providers/ThemeProvider';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   
+  const { theme, toggleTheme, mounted } = useTheme();
   const { user, loading, logout } = useAuth();
 
   const handleLogout = async () => {
@@ -57,7 +59,7 @@ export default function Navbar() {
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     pathname === link.path
                       ? 'text-primary bg-primary/10'
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
                   }`}
                 >
                   {link.name}
@@ -67,6 +69,19 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                className="p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? (
+                  <Sun className="w-5 h-5 text-yellow-400 fill-yellow-400/20" />
+                ) : (
+                  <Moon className="w-5 h-5 text-slate-700 fill-slate-700/10" />
+                )}
+              </button>
+            )}
             {!loading && (
               user ? (
                 <div className="flex items-center gap-4">
@@ -78,11 +93,11 @@ export default function Navbar() {
                         <User className="w-4 h-4 text-primary" />
                       </div>
                     )}
-                    <span className="text-sm text-gray-300 font-medium">{user.name}</span>
+                    <span className="text-sm text-slate-700 dark:text-gray-300 font-medium">{user.name}</span>
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="bg-card border border-card-border hover:bg-white/5 text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
+                    className="bg-card border border-card-border hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-white px-4 py-2 rounded-md text-sm font-medium transition-all"
                   >
                     Logout
                   </button>
@@ -90,7 +105,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href="/login"
-                  className="bg-primary hover:bg-primary-dark text-secondary px-6 py-2 rounded-md text-sm font-bold transition-all shadow-[0_0_15px_rgba(57,255,20,0.3)] hover:shadow-[0_0_25px_rgba(57,255,20,0.5)]"
+                  className="bg-primary hover:bg-primary-dark text-white dark:text-secondary px-6 py-2 rounded-md text-sm font-bold transition-all shadow-[0_0_15px_rgba(21,128,61,0.15)] dark:shadow-[0_0_15px_rgba(57,255,20,0.3)] hover:shadow-[0_0_25px_rgba(21,128,61,0.3)] dark:hover:shadow-[0_0_25px_rgba(57,255,20,0.5)]"
                 >
                   Login
                 </Link>
@@ -100,6 +115,19 @@ export default function Navbar() {
 
           {/* Mobile menu controls */}
           <div className="md:hidden flex items-center gap-3">
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-gray-300 transition-all cursor-pointer"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? (
+                  <Sun className="w-5 h-5 text-yellow-400" />
+                ) : (
+                  <Moon className="w-5 h-5 text-slate-700" />
+                )}
+              </button>
+            )}
             {!loading && (
               user ? (
                 <Link 
@@ -151,7 +179,7 @@ export default function Navbar() {
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   pathname === link.path
                     ? 'text-primary bg-primary/10'
-                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                    : 'text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
                 }`}
               >
                 {link.name}
@@ -163,7 +191,7 @@ export default function Navbar() {
                   <Link
                     href="/profile"
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5"
                   >
                     Profile Settings
                   </Link>
@@ -172,7 +200,7 @@ export default function Navbar() {
                       setIsOpen(false);
                       handleLogout();
                     }}
-                    className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-red-400 hover:bg-white/5"
+                    className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-red-600 dark:text-red-400 hover:bg-slate-100 dark:hover:bg-white/5"
                   >
                     Logout
                   </button>
@@ -181,7 +209,7 @@ export default function Navbar() {
                 <Link
                   href="/login"
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-white/5"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-slate-100 dark:hover:bg-white/5"
                 >
                   Login
                 </Link>

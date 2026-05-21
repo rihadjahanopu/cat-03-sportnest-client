@@ -55,7 +55,7 @@ export default function Footer() {
 								SportNest
 							</span>
 						</Link>
-						<p className="text-gray-400 text-sm mb-6">
+						<p className="text-slate-500 dark:text-gray-400 text-sm mb-6">
 							The ultimate platform to book premium sports facilities, join
 							communities, and manage your venues.
 						</p>
@@ -93,28 +93,28 @@ export default function Footer() {
 							<li>
 								<Link
 									href="/"
-									className="text-gray-400 hover:text-primary transition-colors text-sm">
+									className="text-slate-500 dark:text-gray-400 hover:text-primary transition-colors text-sm">
 									Home
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="/facilities"
-									className="text-gray-400 hover:text-primary transition-colors text-sm">
+									className="text-slate-500 dark:text-gray-400 hover:text-primary transition-colors text-sm">
 									Browse Facilities
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="/add-facility"
-									className="text-gray-400 hover:text-primary transition-colors text-sm">
+									className="text-slate-500 dark:text-gray-400 hover:text-primary transition-colors text-sm">
 									Partner With Us
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="/login"
-									className="text-gray-400 hover:text-primary transition-colors text-sm">
+									className="text-slate-500 dark:text-gray-400 hover:text-primary transition-colors text-sm">
 									Login
 								</Link>
 							</li>
@@ -127,28 +127,28 @@ export default function Footer() {
 							<li>
 								<Link
 									href="#"
-									className="text-gray-400 hover:text-primary transition-colors text-sm">
+									className="text-slate-500 dark:text-gray-400 hover:text-primary transition-colors text-sm">
 									FAQ
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="#"
-									className="text-gray-400 hover:text-primary transition-colors text-sm">
+									className="text-slate-500 dark:text-gray-400 hover:text-primary transition-colors text-sm">
 									Terms of Service
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="#"
-									className="text-gray-400 hover:text-primary transition-colors text-sm">
+									className="text-slate-500 dark:text-gray-400 hover:text-primary transition-colors text-sm">
 									Privacy Policy
 								</Link>
 							</li>
 							<li>
 								<Link
 									href="#"
-									className="text-gray-400 hover:text-primary transition-colors text-sm">
+									className="text-slate-500 dark:text-gray-400 hover:text-primary transition-colors text-sm">
 									Contact Us
 								</Link>
 							</li>
@@ -158,7 +158,7 @@ export default function Footer() {
 					<div>
 						<h4 className="text-lg font-bold mb-4">Contact Info</h4>
 						<ul className="space-y-4">
-							<li className="flex items-start gap-3 text-sm text-gray-400">
+							<li className="flex items-start gap-3 text-sm text-slate-500 dark:text-gray-400">
 								<MapPin className="w-5 h-5 text-primary shrink-0" />
 								<span>
 									123 Sports Avenue, Suite 100
@@ -166,11 +166,11 @@ export default function Footer() {
 									Dhaka, Bangladesh
 								</span>
 							</li>
-							<li className="flex items-center gap-3 text-sm text-gray-400">
+							<li className="flex items-center gap-3 text-sm text-slate-500 dark:text-gray-400">
 								<Phone className="w-5 h-5 text-primary shrink-0" />
 								<span>+88017XXXXXXXX</span>
 							</li>
-							<li className="flex items-center gap-3 text-sm text-gray-400">
+							<li className="flex items-center gap-3 text-sm text-slate-500 dark:text-gray-400">
 								<Mail className="w-5 h-5 text-primary shrink-0" />
 								<span>info@sportnest.com</span>
 							</li>
@@ -178,7 +178,7 @@ export default function Footer() {
 					</div>
 				</div>
 
-				<div className="mt-12 pt-8 border-t border-card-border text-center text-sm text-gray-500">
+				<div className="mt-12 pt-8 border-t border-card-border text-center text-sm text-slate-400 dark:text-gray-500">
 					<p>
 						&copy; {new Date().getFullYear()} SportNest. All rights reserved.
 					</p>
